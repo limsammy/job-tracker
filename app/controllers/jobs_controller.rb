@@ -36,7 +36,7 @@ class JobsController < ApplicationController
     job = Job.find(params[:id])
     job.destroy
 
-    flash[:success] = "#{job.name} from #{job.company.name} was successfully deleted!"
+    flash[:success] = "#{job.title} from #{job.company.name} was successfully deleted!"
     redirect_to companies_path
   end
 
