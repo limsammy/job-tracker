@@ -3,14 +3,10 @@ require 'rails_helper'
 describe "User creates a new category" do
   scenario "a user can create a new job" do
     company = Company.create!(name: "ESPN")
-    job = company.jobs.create(title: "Engineer")
-    category = job.categories.create(title: "Dev")
-    visit new_company_job_path(company)
+    job = company.jobs.create!(title: "Engineering", description: "What a great position!", level_of_interest: rand(100), city: "Portland")
+    visit company_job_categories(company)
 
-    fill_in "job[title]", with: "Developer"
-    fill_in "job[description]", with: "So fun!"
-    fill_in "job[level_of_interest]", with: 80
-    fill_in "job[city]", with: "Denver"
+    fill_in "category[title]", with: "Dev"
 
     click_button "Create"
 
