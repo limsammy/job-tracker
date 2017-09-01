@@ -5,6 +5,11 @@ class JobsController < ApplicationController
   end
 
   def new
+    if Category.all.count > 0
+      @categories = Category.all
+    else
+      @categories = nil
+    end
     @company = Company.find(params[:company_id])
     @job = Job.new()
   end
