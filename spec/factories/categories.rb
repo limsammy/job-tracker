@@ -1,6 +1,6 @@
+require 'faker'
 FactoryGirl.define do
   factory :category do
-    title "MyString"
-    jobs nil
+    title Faker::Job.field
   end
 end
