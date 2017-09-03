@@ -1,6 +1,7 @@
 describe "Creating a comment" do
   scenario "user fills out a form for creating a comment" do
-    job = create(:job)
+    company = create(:company)
+    job = create(:job, company_id: company.id)
     visit company_job_path(job.company, job)
     fill_in "comment[content]", with: "This Is Comment Text"
     click_on "Create Comment"
