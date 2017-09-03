@@ -12,14 +12,14 @@ describe "Categories index page" do
     expect(page).to have_link("Delete", href: category_path(category_2))
 
     click_on "Category1Title"
-    expect(page).to have_current_path(category_path(category_1))
+    expect(page).to have_current_path("/categories/#{category_1.id}")
 
     click_on "All Categories"
     expect(page).to have_current_path(categories_path)
 
     within(".category_#{category_1.id}") do
       click_on "Edit"
-      expect(page).to have_current_path(edit_category_path(category_1))
+      expect(page).to have_current_path("/categories/#{category_1.id}")
     end
   end
 end
