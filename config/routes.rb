@@ -10,4 +10,6 @@ Rails.application.routes.draw do
   end
 
   resources :categories
+
+  get '/dashboard' => 'dashboard#dashboard'
 end
