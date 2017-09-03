@@ -22,14 +22,23 @@ class JobsController < ApplicationController
 
   def show
     @job = Job.find(params[:id])
+    @comment = Comment.new
+    @comments = @job.comments.all.reverse
   end
 
   def edit
-    # implement on your own!
+    @job = Job.find(params[:id])
   end
 
   def update
-    # implement on your own!
+    @job = Job.find(params[:id])
+    @job.update(job_params)
+    if @job.save
+      flash[:success] = "#{@job.title} updated successfully!"
+      redirect_to company_job_path(@job.company, @job)
+    else
+      render :edit
+    end
   end
 
   def destroy
