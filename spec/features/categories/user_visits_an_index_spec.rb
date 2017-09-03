@@ -19,7 +19,7 @@ describe "Categories index page" do
 
     within(".category_#{category_1.id}") do
       click_on "Edit"
-      expect(page).to have_current_path("/categories/#{category_1.id}")
+      expect(page).to have_current_path("/categories/#{category_1.id}/edit")
     end
   end
 end
