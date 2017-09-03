@@ -10,6 +10,7 @@ require 'capybara'
 require 'launchy'
 require 'factory_girl_rails'
 require 'faker'
+require 'support/custom_matchers'
 
 Dir[Rails.root.join('spec/support/**/*.rb')].each { |f| require f }
 
