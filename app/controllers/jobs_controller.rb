@@ -3,10 +3,6 @@ class JobsController < ApplicationController
     if params[:company_id]
       @company = Company.find(params[:company_id])
       @jobs = @company.jobs
-    elsif params[:sort] && params[:sort] == "location"
-      @jobs = Job.all.order(city: :asc)
-    elsif params[:sort] && params[:sort] == "interest"
-      @jobs = Job.all.order(level_of_interest: :desc)
     elsif params[:location]
       @city = params[:location]
       render :location
