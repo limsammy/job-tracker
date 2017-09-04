@@ -11,4 +11,8 @@ class Job < ApplicationRecord
   def self.locations_and_jobs
     group(:city).count
   end
+
+  def self.by_city(city)
+    Job.where(city: city)
+  end
 end

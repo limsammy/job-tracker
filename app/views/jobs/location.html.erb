@@ -1,6 +1,6 @@
 <h1>Jobs in <%= @city %></h1>
 <ul>
-  <% Job.where(city: @city).each do |job| %>
+  <% Job.by_city(@city).each do |job| %>
   <li>
     <%= link_to job.title, company_job_path(job.company, job) %>
   </li>
