@@ -1,7 +1,17 @@
 class JobsController < ApplicationController
   def index
-    @company = Company.find(params[:company_id])
-    @jobs = @company.jobs
+    binding.pry
+    if params[:company_id]
+      @company = Company.find(params[:company_id])
+      @jobs = @company.jobs
+    elsif params[:sort] && params[:sort] == "location"
+      @jobs = Job.all.order(city: :asc)
+    elsif params[:sort] && params[:sort] == "interest"
+      @jobs = Job.all.order(level_of_interest: :desc)
+    elsif params[:location]
+      @city = params[:location]
+      render :location
+    end
   end
 
   def new
@@ -52,6 +62,6 @@ class JobsController < ApplicationController
   private
 
   def job_params
-    params.require(:job).permit(:title, :description, :level_of_interest, :city, :category_id)
+    params.require(:job).permit(:title, :description, :level_of_interest, :city, :category_id, :location)
   end
 end
