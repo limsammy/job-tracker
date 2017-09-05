@@ -11,6 +11,10 @@ Rails.application.routes.draw do
 
   resources :categories
 
+  resources :companies, only: [:show] do
+    resources :contacts, only: [:create]
+  end
+
   get '/dashboard' => 'dashboard#dashboard'
 
   root to: 'dashboard#dashboard'

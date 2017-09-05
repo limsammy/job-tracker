@@ -12,7 +12,17 @@ City: <%= @job.city %>
 
 Company: <%= link_to @job.company.name, company_path(@job.company) %>
 
+Category: <%= link_to @job.category.title, category_path(@job.category) %>
+
 <br>
 <%= render partial: "comments/form" %>
 <br>
 <%= render partial: "comments/comment", collection: @comments  %>
+
+<h4>Create a Contact</h4>
+<%= render partial: "contacts/form" %>
+
+<br/>
+
+<h4>All Contacts for <strong><%= @company.name %></strong></h4><br/>
+<%= render partial: "contacts/contact", collection: @company.contacts.all %>
