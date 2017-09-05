@@ -1,6 +1,7 @@
 class Company < ApplicationRecord
   validates :name, presence: true, uniqueness: true
   has_many :jobs, dependent: :destroy
+  has_many :contacts, dependent: :destroy
 
   def self.top_three_companies
     companies_with_interest = Company.all.map do |company|
